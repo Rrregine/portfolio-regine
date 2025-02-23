@@ -1,0 +1,173 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+
+@model List<Portfolio_Regine.Models.Project>
+
+<!-- Inline CSS for page styling -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fa;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .float-right {
+        float: right;
+        margin-left: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .mb-3 {
+        margin-bottom: 20px;
+    }
+
+    /* Table Styling */
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        background-color: #fff;
+        table-layout: fixed;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .table th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        /* Column Width Adjustments */
+        .table td:nth-child(1), /* Title Column */
+        .table td:nth-child(2) { /* Category Column */
+            width: 15%;
+        }
+
+        .table td:nth-child(3) { /* Description Column */
+            width: 40%;
+            white-space: normal;
+        }
+
+        .table td:nth-child(4) { /* Image Column */
+            width: 15%;
+            text-align: center;
+        }
+
+        .table td:nth-child(5) { /* Actions Column */
+            width: 15%;
+            text-align: center;
+        }
+
+        /* Image Styling */
+        .table img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+</style>
+
+<div class="container">
+    <!-- Logout Button -->
+    <a href="@Url.Action("Logout", "Account")" class="btn btn-danger mb-3 float-right">Logout</a>
+
+    <!-- Go to Homepage -->
+    <a href="@Url.Action("Index", "Home")" class="btn btn-danger mb-3 float-right">Back to Homepage</a>
+
+    <h2>Manage Comments</h2>
+
+    <!-- Button to navigate to the Testimonial page -->
+    <a href="@Url.Action("Index", "Testimonial")" class="btn btn-info mb-3">Manage Testimonials</a>
+
+    <h2>Manage Projects</h2>
+
+    <!-- Button to add new project -->
+    <a href="@Url.Action("Create", "Admin")" class="btn btn-primary mb-3">Add New Project</a>
+
+    <!-- Table to display projects -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Image</th> <!-- Added Image Column -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var project in Model)
+            {
+                <tr>
+                    <td>@project.Title</td>
+                    <td>@project.Category</td>
+                    <td>@project.Description</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(project.ImagePath))
+                        {
+                            <img src="@project.ImagePath" alt="Project Image" />
+                        }
+                        else
+                        {
+                            <span>No Image</span>
+                        }
+                    </td>
+                    <td>
+                        <!-- Edit Button -->
+                        <a href="@Url.Action("Edit", "Admin", new { id = project.Id })" class="btn btn-warning btn-sm">Edit</a>
+
+                        <!-- Delete Button (with confirmation) -->
+                        <a href="@Url.Action("Delete", "Admin", new { id = project.Id })" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Are you sure you want to delete this project?');">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

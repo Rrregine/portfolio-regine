@@ -1,0 +1,58 @@
+﻿@model List<Testimonial>
+
+<!-- Back to Admin Page Button -->
+<a href="@Url.Action("Index", "Admin")" class="btn btn-danger mb-3 float-right">Back to Admin Page</a>
+
+<h2 style="text-align: center; margin: 20px 0;">Testimonials</h2>
+
+<div style="display: flex; gap: 20px; justify-content: center;">
+    <!-- Approved Testimonials Column -->
+    <div style="width: 45%;">
+        <h3 style="color: green; text-align: center;">Approved Testimonials ✅</h3>
+        @if (Model.Any(t => t.IsApproved))
+        {
+            @foreach (var testimonial in Model.Where(t => t.IsApproved))
+            {
+                <div style="border: 3px solid green; padding: 15px; margin-bottom: 15px; border-radius: 10px;">
+                    <h4 style="margin: 0;">@testimonial.Title</h4>
+                    <h5 style="margin: 5px 0;">@testimonial.Name</h5>
+                    <p style="margin: 10px 0;">@testimonial.Message</p>
+                    <p style="color: gray; font-size: small;">Submitted on @testimonial.SubmittedAt.ToString("MMMM dd, yyyy")</p>
+                </div>
+            }
+        }
+        else
+        {
+            <p style="text-align: center; color: gray;">No approved testimonials available.</p>
+        }
+    </div>
+
+    <!-- Unapproved Testimonials Column -->
+    <div style="width: 45%;">
+        <h3 style="color: orange; text-align: center;">Unapproved Testimonials ⏳</h3>
+        @if (Model.Any(t => !t.IsApproved))
+        {
+            @foreach (var testimonial in Model.Where(t => !t.IsApproved))
+            {
+                <div style="border: 3px solid orange; padding: 15px; margin-bottom: 15px; border-radius: 10px;">
+                    <h4 style="margin: 0;">@testimonial.Title</h4>
+                    <h5 style="margin: 5px 0;">@testimonial.Name</h5>
+                    <p style="margin: 10px 0;">@testimonial.Message</p>
+                    <p style="color: gray; font-size: small;">Submitted on @testimonial.SubmittedAt.ToString("MMMM dd, yyyy")</p>
+
+                    <form method="post" asp-action="Approve" asp-route-id="@testimonial.Id" style="display: inline;">
+                        <button type="submit" style="background-color: green; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Approve</button>
+                    </form>
+
+                    <form method="post" asp-action="Reject" asp-route-id="@testimonial.Id" style="display: inline;">
+                        <button type="submit" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Reject</button>
+                    </form>
+                </div>
+            }
+        }
+        else
+        {
+            <p style="text-align: center; color: gray;">No pending testimonials.</p>
+        }
+    </div>
+</div>

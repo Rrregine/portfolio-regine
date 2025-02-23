@@ -1,0 +1,514 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+@model HomeViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Portfolio_Regine.Controllers
+@using System.Globalization
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+          rel="stylesheet" />
+
+    <title>Regine Wang Portfolio</title>
+    <!--
+    Reflux Template
+    https://templatemo.com/tm-531-reflux
+    -->
+    <!-- Bootstrap core CSS -->
+    <link href="css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="css/assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="css/assets/css/templatemo-style.css" />
+    <link rel="stylesheet" href="css/assets/css/owl.css" />
+    <link rel="stylesheet" href="css/assets/css/lightbox.css" />
+
+    <style>
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+            margin: 20px auto;
+        }
+
+            .language-switcher a {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                padding: 8px 16px;
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+                .language-switcher a:hover {
+                    background: grey;
+                    color: white;
+                }
+    </style>
+</head>
+
+<body>
+    <div id="page-wraper">
+        <!-- Sidebar Menu -->
+        <div class="responsive-nav">
+            <i class="fa fa-bars" id="menu-toggle"></i>
+            <div id="menu" class="menu">
+                <i class="fa fa-times" id="menu-close"></i>
+                <div class="container">
+                    <div class="image">
+                        <a href="#"><img src="css/assets/images/regine-wang.jpg" alt="" /></a>
+                    </div>
+                    <div class="author-content">
+                        <h4>@Model.TranslatedStrings["AuthorName"]</h4>
+                        <span>@Model.TranslatedStrings["JobTitle"]</span>
+                    </div>
+                    <nav class="main-nav" role="navigation">
+                        <ul class="main-menu">
+                            <li><a href="#section1">@Model.TranslatedStrings["AboutMe"]</a></li>
+                            <li><a href="#section2">@Model.TranslatedStrings["WhatImGoodAt"]</a></li>
+                            <li><a href="#section3">@Model.TranslatedStrings["MyWork"]</a></li>
+                            <li><a href="#section4">@Model.TranslatedStrings["Testimonials"]</a></li>
+                        </ul>
+                    </nav>
+                    <div class="social-network">
+                        <ul class="soial-icons">
+                            <li>
+                                <a href="https://github.com/Rrregine">
+                                    <i class="fa fa-github"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/regine-wang-06214928a/">
+                                    <i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <br /><br />
+
+                    <!-- Language Toggle Button -->
+
+                    <div class="language-switcher">
+                        <a href="?lang=en">English</a> 
+                        <a href="?lang=fr">Français</a> 
+                    </div>
+
+                    <ul class="navbar-nav ml-auto">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Logout", "Account")">Logout</a>
+                            </li>
+
+                            <a class="nav-link" href="@Url.Action("Index", "Admin")">Manage Page</a>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Login", "Account")">Login</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <div class="copyright-text">
+                        <p>Regine Wang Portfolio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section about-me" data-section="section1">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>@Model.TranslatedStrings["AboutMeHeading"]</h2>
+                    <div class="line-dec"></div>
+                    <p>@Model.TranslatedStrings["AboutMeContent1"]</p>
+                    <p>@Model.TranslatedStrings["AboutMeContent2"]</p>
+                    <p>@Model.TranslatedStrings["AboutMeContent3"]</p>
+                    <p>@Model.TranslatedStrings["AboutMeContent4"]</p>
+                </div>
+                <div class="left-image-post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="left-image">
+                                <img src="css/assets/images/full-stack-development.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="right-text">
+                                <h4>@Model.TranslatedStrings["SkillsHeading"]</h4>
+                                <p>@Model.TranslatedStrings["SkillsContent1"]</p>
+                                <p>@Model.TranslatedStrings["SkillsContent2"]</p>
+                                <p>@Model.TranslatedStrings["SkillsContent3"]</p>
+                                <p>@Model.TranslatedStrings["SkillsCVText"]</p>
+                                <div class="white-button">
+                                    <a href="@Url.Action("DownloadCV", "Home")">@Model.TranslatedStrings["DownloadCV"]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-image-post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="left-text">
+                                <h4>@Model.TranslatedStrings["FreeTimeHeading"]</h4>
+                                <p>@Model.TranslatedStrings["FreeTimeContent1"]</p>
+                                <p>@Model.TranslatedStrings["FreeTimeContent2"]</p>
+                                <p>@Model.TranslatedStrings["FreeTimeContent3"]</p>
+                                <p>@Model.TranslatedStrings["FreeTimeContactText"]</p>
+                                <div class="white-button">
+                                    <a href="#">
+                                        @Model.TranslatedStrings["FreeTimeButton"]
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="right-image">
+                                <img src="css/assets/images/book-flower.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section my-services" data-section="section2">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>@Model.TranslatedStrings["WhatImGoodAtHeading"]</h2>
+                    <div class="line-dec"></div>
+                    <span>@Model.TranslatedStrings["WhatImGoodAtIntro"]</span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="service-item">
+                            <div class="first-service-icon service-icon"></div>
+                            <h4>@Model.TranslatedStrings["Skill1Title"]</h4>
+                            <p>@Model.TranslatedStrings["Skill1Description"]</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="service-item">
+                            <div class="second-service-icon service-icon"></div>
+                            <h4>@Model.TranslatedStrings["Skill2Title"]</h4>
+                            <p>@Model.TranslatedStrings["Skill2Description"]</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="service-item">
+                            <div class="third-service-icon service-icon"></div>
+                            <h4>@Model.TranslatedStrings["Skill3Title"]</h4>
+                            <p>@Model.TranslatedStrings["Skill3Description"]</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="service-item">
+                            <div class="fourth-service-icon service-icon"></div>
+                            <h4>@Model.TranslatedStrings["Skill4Title"]</h4>
+                            <p>@Model.TranslatedStrings["Skill4Description"]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="section my-work" data-section="section3">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>@Model.TranslatedStrings["MyWorkHeading"]</h2>
+                    <div class="line-dec"></div>
+                    <span>
+                        @Model.TranslatedStrings["HereAreSomeProjects"]
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="isotope-wrapper">
+                        <form class="isotope-toolbar">
+                            <label>
+                                <input type="radio"
+                                       data-type="*"
+                                       checked=""
+                                       name="isotope-filter" />
+                                <span>@Model.TranslatedStrings["All"]</span>
+                            </label>
+                            <label>
+                                <input type="radio"
+                                       data-type="website"
+                                       name="isotope-filter" />
+                                <span>@Model.TranslatedStrings["Website"]</span>
+                            </label>
+                            <label>
+                                <input type="radio"
+                                       data-type="mobile app"
+                                       name="isotope-filter" />
+                                <span>@Model.TranslatedStrings["MobileApp"]</span>
+                            </label>
+                            <label>
+                                <input type="radio"
+                                       data-type="game"
+                                       name="isotope-filter" />
+                                <span>@Model.TranslatedStrings["Game"]</span>
+                            </label>
+                        </form>
+                        <!-- Loop through projects -->
+                        <div class="isotope-box">
+                            @foreach (var project in Model.Projects)
+                            {
+                                <div class="isotope-item" data-type="@project.Category">
+                                    <figure class="snip1321">
+                                        <img src="@project.ImagePath" alt="@project.Title" />
+                                        <figcaption>
+                                            <h4>@project.Title</h4>
+                                        </figcaption>
+                                    </figure>
+                                    <p>@project.Description</p>
+                                </div>
+                            }
+                        </div>
+                        <!-- End loop -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section comments" data-section="section4">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>@Model.TranslatedStrings["LeaveYourCommentsHere"]</h2>
+                    <div class="line-dec"></div>
+                    <span>
+                        @Model.TranslatedStrings["WhatDoYouThinkAboutMyWork"]
+                        @Model.TranslatedStrings["LeaveYourCommentsHere"]
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="right-content">
+                        <div class="container">
+                            <!-- Display success message -->
+                            <div id="messageContainer"></div>
+
+                            <!-- Updated form with action and method -->
+                            <form id="contact" action="@Url.Action("Submit", "Home")" method="post">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <input name="name"
+                                                   type="text"
+                                                   class="form-control"
+                                                   id="name"
+                                                   placeholder="@Model.TranslatedStrings["YourName"]"
+                                                   required="" />
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <input name="email"
+                                                   type="text"
+                                                   class="form-control"
+                                                   id="email"
+                                                   placeholder="@Model.TranslatedStrings["YourEmail"]"
+                                                   required="" />
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <input name="title"
+                                                   type="text"
+                                                   class="form-control"
+                                                   id="title"
+                                                   placeholder="@Model.TranslatedStrings["Title"]"
+                                                   required="" />
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <textarea name="message"
+                                                      rows="6"
+                                                      class="form-control"
+                                                      id="message"
+                                                      placeholder="@Model.TranslatedStrings["YourMessage"]"
+                                                      required=""></textarea>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <!-- Submit button for the form -->
+                                            <button type="submit" class="white-button">@Model.TranslatedStrings["Submit"]</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="section testimonials" >
+            <div class="container">
+                <div class="section-heading">
+                    <h3>@Model.TranslatedStrings["TestimonialsHeading"]</h3>
+                    <div class="line-dec"></div>
+                </div>
+                <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                    @foreach (var testimonial in Model.Testimonials)
+                    {
+                        <div style="
+                                    background: white;
+                                    padding: 20px;
+                                    border-radius: 12px;
+                                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                    width: 280px;
+                                    text-align: center;
+                                    transition: transform 0.3s ease-in-out;
+                                   "
+                             onmouseover="this.style.transform='scale(1.05)'"
+                             onmouseout="this.style.transform='scale(1)'">
+                            <h4 style="font-size: 18px; color: #222; font-weight: bold; margin-bottom: 8px;">
+                                @testimonial.Title
+                            </h4>
+                            <p style="font-size: 16px; color: #333; margin-bottom: 10px;">
+                                @testimonial.Message
+                            </p>
+                            <h5 style="font-size: 14px; color: #666; font-weight: bold;">
+                                - @testimonial.Name
+                            </h5>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="css/vendor/jquery/jquery.min.js"></script>
+    <script src="css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="css/assets/js/isotope.min.js"></script>
+    <script src="css/assets/js/owl-carousel.js"></script>
+    <script src="css/assets/js/lightbox.js"></script>
+    <script src="css/assets/js/custom.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //according to loftblog tut
+        $(".main-menu li:first").addClass("active");
+
+        var showSection = function showSection(section, isAnimate) {
+          var direction = section.replace(/#/, ""),
+            reqSection = $(".section").filter(
+              '[data-section="' + direction + '"]'
+            ),
+            reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $("body, html").animate(
+              {
+                scrollTop: reqSectionPos
+              },
+              800
+            );
+          } else {
+            $("body, html").scrollTop(reqSectionPos);
+          }
+        };
+
+        var checkSection = function checkSection() {
+          $(".section").each(function() {
+            var $this = $(this),
+              topEdge = $this.offset().top - 80,
+              bottomEdge = topEdge + $this.height(),
+              wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var currentId = $this.data("section"),
+                reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+              reqLink
+                .closest("li")
+                .addClass("active")
+                .siblings()
+                .removeClass("active");
+            }
+          });
+        };
+
+        $(".main-menu").on("click", "a", function(e) {
+          e.preventDefault();
+          showSection($(this).attr("href"), true);
+        });
+
+        $(window).scroll(function() {
+          checkSection();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#contact').submit(function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var form = $(this);
+                var actionUrl = form.attr('action');
+
+                // Get the current language from the URL query string (default to "en")
+                var urlParams = new URLSearchParams(window.location.search);
+                var lang = urlParams.get('lang') || 'en';
+
+                // Append the lang parameter to the action URL if it's not already included
+                if (actionUrl.indexOf("lang=") === -1) {
+                    actionUrl += (actionUrl.indexOf("?") > -1 ? "&" : "?") + "lang=" + lang;
+                }
+
+                $.ajax({
+                    url: actionUrl,
+                    type: 'POST',
+                    data: form.serialize(),
+                    success: function (response) {
+                        // Use the translated message returned from the server
+                        var alertClass = response.success ? 'alert-success' : 'alert-danger';
+                        $('#messageContainer').html(
+                            '<div class="alert ' + alertClass + '">' + response.message + '</div>'
+                        );
+
+                        // Optionally reset the form if submission is successful
+                        if (response.success) {
+                            form[0].reset();
+                        }
+                    },
+                    error: function () {
+                        // Provide an error message in the current language
+                        var errorMessage = (lang === "fr") ?
+                            "Une erreur s'est produite. Veuillez réessayer plus tard." :
+                            "An error occurred. Please try again later.";
+                        $('#messageContainer').html(
+                            '<div class="alert alert-danger">' + errorMessage + '</div>'
+                        );
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>
