@@ -3,44 +3,61 @@
 }
 
 <h2 style="text-align:center; margin-bottom:20px;">Add New Project</h2>
+<p style="text-align:center; color:#555;">* All fields must be filled out (none can be empty).</p>
 
-<!-- Create form for adding new project -->
+<!-- Display validation summary -->
+<div asp-validation-summary="ModelOnly" class="text-danger" style="max-width:600px; margin:0 auto;"></div>
+
 @model Portfolio_Regine.Models.Project
 
 <div style="max-width:600px; margin:0 auto; border:1px solid #ddd; padding:20px; border-radius:5px; background-color:#f9f9f9;">
     <form asp-action="Create" method="post" enctype="multipart/form-data">
         <div class="form-group" style="margin-bottom:15px;">
             <label for="Title" style="font-weight:bold; display:block; margin-bottom:5px;">Project Title</label>
-            <input type="text" class="form-control" id="Title" name="Title" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"/>
+            <input type="text" class="form-control" id="Title" name="Title" asp-for="Title" required
+                   style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"/>
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
             <label style="font-weight:bold; display:block; margin-bottom:5px;">Category</label>
-            <select asp-for="Category" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+            <select asp-for="Category" class="form-control" required
+                    style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                <option value="">-- Select a category --</option>
                 <option value="website">Website</option>
                 <option value="mobile app">Mobile App</option>
                 <option value="game">Game</option>
             </select>
+            <span asp-validation-for="Category" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
             <label for="Description" style="font-weight:bold; display:block; margin-bottom:5px;">Description</label>
-            <textarea class="form-control" id="Description" name="Description" rows="4" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+            <textarea class="form-control" id="Description" name="Description" asp-for="Description" rows="4" required
+                      style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
             <label for="DescriptionFrench" style="font-weight:bold; display:block; margin-bottom:5px;">Description (French)</label>
-            <textarea class="form-control" id="DescriptionFrench" name="DescriptionFrench" asp-for="DescriptionFrench" rows="4" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+            <textarea class="form-control" id="DescriptionFrench" name="DescriptionFrench" asp-for="DescriptionFrench" rows="4" required
+                      style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+            <span asp-validation-for="DescriptionFrench" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
             <label for="Skills" style="font-weight:bold; display:block; margin-bottom:5px;">Skills (comma-separated)</label>
-            <input type="text" class="form-control" id="Skills" name="Skills" asp-for="Skills" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"/>
+            <input type="text" class="form-control" id="Skills" name="Skills" asp-for="Skills" required
+                   style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"/>
+            <span asp-validation-for="Skills" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
             <label for="Image" style="font-weight:bold; display:block; margin-bottom:5px;">Image</label>
-            <input type="file" class="form-control" id="Image" name="Image" style="width:100%; padding:8px;"/>
+            <input type="file" class="form-control" id="Image" name="Image" required
+                   style="width:100%; padding:8px;"/>
+            <span style="display:block; margin-top:5px; color:#555;">* A file upload is required.</span>
+            <span asp-validation-for="ImagePath" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-top:20px; text-align:right;">
@@ -49,3 +66,7 @@
         </div>
     </form>
 </div>
+
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+

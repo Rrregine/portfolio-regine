@@ -12,31 +12,37 @@
 
         <div class="form-group" style="margin-bottom:15px;">
             <label style="font-weight:bold; display:block; margin-bottom:5px;">Title</label>
-            <input type="text" asp-for="Title" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+            <input type="text" asp-for="Title" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
             <label style="font-weight:bold; display:block; margin-bottom:5px;">Category</label>
-            <select asp-for="Category" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+            <select asp-for="Category" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required>
+                <option value="">Select a category</option>
                 <option value="website">Website</option>
                 <option value="mobile app">Mobile App</option>
                 <option value="game">Game</option>
             </select>
+            <span asp-validation-for="Category" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
             <label style="font-weight:bold; display:block; margin-bottom:5px;">Description</label>
-            <textarea asp-for="Description" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+            <textarea asp-for="Description" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
             <label style="font-weight:bold; display:block; margin-bottom:5px;">Description (French)</label>
-            <textarea asp-for="DescriptionFrench" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+            <textarea asp-for="DescriptionFrench" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required></textarea>
+            <span asp-validation-for="DescriptionFrench" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
             <label style="font-weight:bold; display:block; margin-bottom:5px;">Skills (comma-separated)</label>
-            <input type="text" asp-for="Skills" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+            <input type="text" asp-for="Skills" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required />
+            <span asp-validation-for="Skills" class="text-danger"></span>
         </div>
 
         <div class="form-group" style="margin-bottom:15px;">
@@ -64,3 +70,6 @@
         </div>
     </form>
 </div>
+
+@await Html.PartialAsync("_ValidationScriptsPartial")
+

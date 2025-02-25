@@ -49,7 +49,7 @@
                     <p style="margin: 10px 0;">@testimonial.Message</p>
                     <p style="color: gray; font-size: small;">Submitted on @testimonial.SubmittedAt.ToString("MMMM dd, yyyy")</p>
 
-                    <form method="post" asp-action="Approve" asp-route-id="@testimonial.Id" style="display: inline;" onsubmit="return confirmAction();">
+                    <form method="post" asp-action="Approve" asp-route-id="@testimonial.Id" style="display: inline;" onsubmit="return confirmApprove();">
                         <button type="submit" style="background-color: green; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Approve</button>
                     </form>
 
@@ -74,8 +74,7 @@
     }
 
     // Confirmation for Approve or Reject
-    function confirmAction(action) {
-        let message = action === 'approve' ? "Are you sure you want to approve this testimonial?" : "Are you sure you want to reject this testimonial?";
-        return confirm(message);
+    function confirmApprove() {
+        return confirm("Are you sure you want to approve this testimonial?");
     }
 </script>

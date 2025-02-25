@@ -265,12 +265,12 @@
       "PackagePath": "staticwebassets\\css\\assets\\images\\author-image.jpg"
     },
     {
-      "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\css\\assets\\images\\book-flower.jpg",
-      "PackagePath": "staticwebassets\\css\\assets\\images\\book-flower.jpg"
-    },
-    {
       "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\css\\assets\\images\\close.png",
       "PackagePath": "staticwebassets\\css\\assets\\images\\close.png"
+    },
+    {
+      "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\css\\assets\\images\\cs.jpg",
+      "PackagePath": "staticwebassets\\css\\assets\\images\\cs.jpg"
     },
     {
       "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\css\\assets\\images\\first-main-icon.png",
@@ -289,16 +289,16 @@
       "PackagePath": "staticwebassets\\css\\assets\\images\\fourth-white-icon.png"
     },
     {
-      "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\css\\assets\\images\\full-stack-development.jpg",
-      "PackagePath": "staticwebassets\\css\\assets\\images\\full-stack-development.jpg"
-    },
-    {
       "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\css\\assets\\images\\left-image.jpg",
       "PackagePath": "staticwebassets\\css\\assets\\images\\left-image.jpg"
     },
     {
       "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\css\\assets\\images\\loading.gif",
       "PackagePath": "staticwebassets\\css\\assets\\images\\loading.gif"
+    },
+    {
+      "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\css\\assets\\images\\my-succulent.jpg",
+      "PackagePath": "staticwebassets\\css\\assets\\images\\my-succulent.jpg"
     },
     {
       "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\css\\assets\\images\\next.png",
@@ -469,28 +469,16 @@
       "PackagePath": "staticwebassets\\images\\champlain-pet-clinic.png"
     },
     {
-      "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\images\\confirmation.png",
-      "PackagePath": "staticwebassets\\images\\confirmation.png"
-    },
-    {
       "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\images\\haven-labs.png",
       "PackagePath": "staticwebassets\\images\\haven-labs.png"
     },
     {
+      "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\images\\portfolio-regine.png",
+      "PackagePath": "staticwebassets\\images\\portfolio-regine.png"
+    },
+    {
       "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\images\\time-manager.png",
       "PackagePath": "staticwebassets\\images\\time-manager.png"
-    },
-    {
-      "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\images\\屏幕截图 2024-04-15 214727.png",
-      "PackagePath": "staticwebassets\\images\\屏幕截图 2024-04-15 214727.png"
-    },
-    {
-      "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\images\\屏幕截图 2024-04-16 110928.png",
-      "PackagePath": "staticwebassets\\images\\屏幕截图 2024-04-16 110928.png"
-    },
-    {
-      "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\images\\屏幕截图 2024-04-16 111049.png",
-      "PackagePath": "staticwebassets\\images\\屏幕截图 2024-04-16 111049.png"
     },
     {
       "Id": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\wwwroot\\js\\site.js",
