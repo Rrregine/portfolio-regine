@@ -4,48 +4,63 @@
 
 @model Portfolio_Regine.Models.Project
 
-<h2>Edit Project</h2>
-<form method="post" enctype="multipart/form-data">
-    <input type="hidden" asp-for="Id" />
+<h2 style="text-align:center; margin-bottom:20px;">Edit Project</h2>
 
-    <div class="form-group">
-        <label>Title</label>
-        <input type="text" asp-for="Title" class="form-control" />
-    </div>
+<div style="max-width:600px; margin:0 auto; border:1px solid #ddd; padding:20px; border-radius:5px; background-color:#f9f9f9;">
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
 
-    <div class="form-group">
-        <label>Category</label>
-        <select asp-for="Category" class="form-control">
-            <option value="website">Website</option>
-            <option value="mobile app">Mobile App</option>
-            <option value="game">Game</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label>Description</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label>Current Image</label>
-        <div>
-            @if (!string.IsNullOrEmpty(Model.ImagePath))
-            {
-                <img src="@Model.ImagePath" alt="Project Image" style="width: 100px; height: auto;" />
-            }
-            else
-            {
-                <p>No image available</p>
-            }
+        <div class="form-group" style="margin-bottom:15px;">
+            <label style="font-weight:bold; display:block; margin-bottom:5px;">Title</label>
+            <input type="text" asp-for="Title" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
         </div>
-    </div>
 
-    <div class="form-group">
-        <label>New Image</label>
-        <input type="file" name="image" class="form-control" />
-    </div>
+        <div class="form-group" style="margin-bottom:15px;">
+            <label style="font-weight:bold; display:block; margin-bottom:5px;">Category</label>
+            <select asp-for="Category" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                <option value="website">Website</option>
+                <option value="mobile app">Mobile App</option>
+                <option value="game">Game</option>
+            </select>
+        </div>
 
-    <button type="submit" class="btn btn-success">Save</button>
-</form>
+        <div class="form-group" style="margin-bottom:15px;">
+            <label style="font-weight:bold; display:block; margin-bottom:5px;">Description</label>
+            <textarea asp-for="Description" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom:15px;">
+            <label style="font-weight:bold; display:block; margin-bottom:5px;">Description (French)</label>
+            <textarea asp-for="DescriptionFrench" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom:15px;">
+            <label style="font-weight:bold; display:block; margin-bottom:5px;">Skills (comma-separated)</label>
+            <input type="text" asp-for="Skills" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+        </div>
+
+        <div class="form-group" style="margin-bottom:15px;">
+            <label style="font-weight:bold; display:block; margin-bottom:5px;">Current Image</label>
+            <div style="margin-top:5px;">
+                @if (!string.IsNullOrEmpty(Model.ImagePath))
+                {
+                    <img src="@Model.ImagePath" alt="Project Image" style="width: 150px; height: auto; border-radius:4px; display:block; margin-bottom:10px;" />
+                }
+                else
+                {
+                    <p style="color:#888;">No image available</p>
+                }
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:15px;">
+            <label style="font-weight:bold; display:block; margin-bottom:5px;">New Image</label>
+            <input type="file" name="image" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
+        </div>
+
+        <div class="form-group" style="margin-top:20px; text-align:right;">
+            <button type="submit" class="btn btn-success" style="background-color:#28a745; color:#fff; border:none; padding:10px 20px; border-radius:4px; cursor:pointer;">Save</button>
+            <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary" style="background-color:#6c757d; color:#fff; border:none; padding:10px 20px; border-radius:4px; text-decoration:none; margin-left:10px;">Cancel</a>
+        </div>
+    </form>
+</div>

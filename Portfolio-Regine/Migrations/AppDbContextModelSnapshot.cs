@@ -227,7 +227,15 @@ namespace Portfolio_Regine.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("DescriptionFrench")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Skills")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

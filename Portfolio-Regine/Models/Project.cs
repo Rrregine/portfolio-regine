@@ -15,6 +15,12 @@ namespace Portfolio_Regine.Models
 
         [Required]
         public required string Description { get; set; }
+        
+        [Required]
+        public required string DescriptionFrench { get; set; }
+        
+        [Required]
+        public required string Skills { get; set; }
 
         [Required]
         public required string ImagePath { get; set; }

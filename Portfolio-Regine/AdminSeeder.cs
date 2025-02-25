@@ -16,6 +16,12 @@ namespace Portfolio_Regine
             // Create Admin User
             string adminEmail = "admin@email.com";
             string adminPassword = "Admin123";
+            
+            var users = userManager.Users.ToList();
+            foreach (var user in users)
+            {
+                await userManager.DeleteAsync(user);
+            }
 
             if (await userManager.FindByEmailAsync(adminEmail) == null)
             {

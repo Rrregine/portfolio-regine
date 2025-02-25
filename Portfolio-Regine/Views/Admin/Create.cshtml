@@ -2,38 +2,50 @@
     ViewBag.Title = "Add New Project";
 }
 
-<h2>Add New Project</h2>
+<h2 style="text-align:center; margin-bottom:20px;">Add New Project</h2>
 
 <!-- Create form for adding new project -->
 @model Portfolio_Regine.Models.Project
 
-<form asp-action="Create" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="Title">Project Title</label>
-        <input type="text" class="form-control" id="Title" name="Title" required />
-    </div>
+<div style="max-width:600px; margin:0 auto; border:1px solid #ddd; padding:20px; border-radius:5px; background-color:#f9f9f9;">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="form-group" style="margin-bottom:15px;">
+            <label for="Title" style="font-weight:bold; display:block; margin-bottom:5px;">Project Title</label>
+            <input type="text" class="form-control" id="Title" name="Title" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"/>
+        </div>
 
-    <div class="form-group">
-        <label>Category</label>
-        <select asp-for="Category" class="form-control">
-            <option value="website">Website</option>
-            <option value="mobile app">Mobile App</option>
-            <option value="game">Game</option>
-        </select>
-    </div>
+        <div class="form-group" style="margin-bottom:15px;">
+            <label style="font-weight:bold; display:block; margin-bottom:5px;">Category</label>
+            <select asp-for="Category" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                <option value="website">Website</option>
+                <option value="mobile app">Mobile App</option>
+                <option value="game">Game</option>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label for="Description">Description</label>
-        <textarea class="form-control" id="Description" name="Description" rows="4" required></textarea>
-    </div>
+        <div class="form-group" style="margin-bottom:15px;">
+            <label for="Description" style="font-weight:bold; display:block; margin-bottom:5px;">Description</label>
+            <textarea class="form-control" id="Description" name="Description" rows="4" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+        </div>
 
-    <div class="form-group">
-        <label for="Image">Image</label>
-        <input type="file" class="form-control" id="Image" name="Image" />
-    </div>
+        <div class="form-group" style="margin-bottom:15px;">
+            <label for="DescriptionFrench" style="font-weight:bold; display:block; margin-bottom:5px;">Description (French)</label>
+            <textarea class="form-control" id="DescriptionFrench" name="DescriptionFrench" asp-for="DescriptionFrench" rows="4" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+        </div>
 
-    <div class="form-group mt-3">
-        <button type="submit" class="btn btn-success">Save Project</button>
-        <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary ml-2">Cancel</a>
-    </div>
-</form>
+        <div class="form-group" style="margin-bottom:15px;">
+            <label for="Skills" style="font-weight:bold; display:block; margin-bottom:5px;">Skills (comma-separated)</label>
+            <input type="text" class="form-control" id="Skills" name="Skills" asp-for="Skills" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"/>
+        </div>
+
+        <div class="form-group" style="margin-bottom:15px;">
+            <label for="Image" style="font-weight:bold; display:block; margin-bottom:5px;">Image</label>
+            <input type="file" class="form-control" id="Image" name="Image" style="width:100%; padding:8px;"/>
+        </div>
+
+        <div class="form-group" style="margin-top:20px; text-align:right;">
+            <button type="submit" class="btn btn-success" style="background-color:#28a745; color:#fff; border:none; padding:10px 20px; border-radius:4px; cursor:pointer;">Save Project</button>
+            <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary" style="background-color:#6c757d; color:#fff; border:none; padding:10px 20px; border-radius:4px; text-decoration:none; margin-left:10px;">Cancel</a>
+        </div>
+    </form>
+</div>

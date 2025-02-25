@@ -17,55 +17,55 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Portfolio_Regine
 build_property.RootNamespace = Portfolio_Regine
-build_property.ProjectDir = C:\Users\LinLi\source\repos\Portfolio-Regine\Portfolio-Regine\
+build_property.ProjectDir = C:\Users\LinLi\RiderProjects\portfolio-regine\Portfolio-Regine\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\LinLi\source\repos\Portfolio-Regine\Portfolio-Regine
+build_property.MSBuildProjectDirectory = C:\Users\LinLi\RiderProjects\portfolio-regine\Portfolio-Regine
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/Account/Login.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/Admin/Create.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/Admin/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/Admin/Edit.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/Admin/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/Admin/Index.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/Home/Index.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/Shared/Error.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/Testimonial/Index.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/Testimonial/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pYWxcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/_ViewImports.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/_ViewStart.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LinLi/source/repos/Portfolio-Regine/Portfolio-Regine/Views/Shared/_Layout.cshtml]
+[C:/Users/LinLi/RiderProjects/portfolio-regine/Portfolio-Regine/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-rlq7tjn5aq

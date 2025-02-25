@@ -8,6 +8,7 @@ using Portfolio_Regine.Models;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 
 namespace Portfolio_Regine.Controllers
 {
@@ -84,6 +85,7 @@ namespace Portfolio_Regine.Controllers
             { "YourMessage", Translations.Translate("YourMessage") },
             { "Submit", Translations.Translate("Submit") },
             { "TestimonialsHeading", Translations.Translate("TestimonialsHeading") },
+            { "ViewDetails", Translations.Translate("ViewDetails") },
         }
             };
 
@@ -101,11 +103,42 @@ namespace Portfolio_Regine.Controllers
         //Download CV
         public IActionResult DownloadCV()
         {
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files/CV_E.pdf");
-            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
-            string fileName = "Regine_Wang_CV.pdf";
+            // Define file paths
+            string cvFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files/CV_E.pdf");
+            string additionalFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files/CV_F.pdf");
 
-            return File(fileBytes, "application/pdf", fileName);
+            // Prepare the file names for download
+            string zipFileName = "CVs.zip";
+
+            // Create a memory stream to hold the zip file
+            using (var memoryStream = new MemoryStream())
+            {
+                // Create a zip archive in memory
+                using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    // Add the first CV file to the zip
+                    var cvFileEntry = archive.CreateEntry("CV_E.pdf");
+                    using (var entryStream = cvFileEntry.Open())
+                    using (var fileStream = new FileStream(cvFilePath, FileMode.Open, FileAccess.Read))
+                    {
+                        fileStream.CopyTo(entryStream);
+                    }
+
+                    // Add the second additional file to the zip
+                    var additionalFileEntry = archive.CreateEntry("CV_F.pdf");
+                    using (var entryStream = additionalFileEntry.Open())
+                    using (var fileStream = new FileStream(additionalFilePath, FileMode.Open, FileAccess.Read))
+                    {
+                        fileStream.CopyTo(entryStream);
+                    }
+                }
+
+                // Reset memory stream position to the beginning before returning
+                memoryStream.Position = 0;
+
+                // Return the zip file as a download
+                return File(memoryStream.ToArray(), "application/zip", zipFileName);
+            }
         }
 
         [HttpPost]

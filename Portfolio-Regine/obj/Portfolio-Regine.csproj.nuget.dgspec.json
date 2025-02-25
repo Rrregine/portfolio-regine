@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LinLi\\source\\repos\\Portfolio-Regine\\Portfolio-Regine\\Portfolio-Regine.csproj": {}
+    "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\Portfolio-Regine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LinLi\\source\\repos\\Portfolio-Regine\\Portfolio-Regine\\Portfolio-Regine.csproj": {
+    "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\Portfolio-Regine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LinLi\\source\\repos\\Portfolio-Regine\\Portfolio-Regine\\Portfolio-Regine.csproj",
+        "projectUniqueName": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\Portfolio-Regine.csproj",
         "projectName": "Portfolio-Regine",
-        "projectPath": "C:\\Users\\LinLi\\source\\repos\\Portfolio-Regine\\Portfolio-Regine\\Portfolio-Regine.csproj",
+        "projectPath": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\Portfolio-Regine.csproj",
         "packagesPath": "C:\\Users\\LinLi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LinLi\\source\\repos\\Portfolio-Regine\\Portfolio-Regine\\obj\\",
+        "outputPath": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LinLi\\AppData\\Roaming\\NuGet\\NuGet.Config",

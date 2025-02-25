@@ -59,6 +59,85 @@
                     background: grey;
                     color: white;
                 }
+
+        /* Modal Overlay */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1500;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #333;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 50%;
+            text-align: center;
+            position: relative;
+            transform: translateY(-10%);
+            overflow-y: auto;  /* Enable vertical scrolling if content overflows */
+            max-height: 80vh; /* Fixed maximum height */
+        }
+
+        /* Ensure image remains the same size */
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        /* Scrollable content wrapper */
+        .modal-body {
+            overflow-y: auto;
+            max-height: 60vh; /* Limit height to allow scrolling */
+            padding-right: 10px; /* Prevent content from touching scrollbar */
+        }
+
+        /* Close Button Styling */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /*EmailForm*/
+        .close:hover {
+            color: red;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-button {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .submit-button:hover {
+            background-color: #333;
+        }
     </style>
 </head>
 
@@ -100,7 +179,6 @@
                     <br /><br />
 
                     <!-- Language Toggle Button -->
-
                     <div class="language-switcher">
                         <a href="?lang=en">English</a> 
                         <a href="?lang=fr">Français</a> 
@@ -170,10 +248,33 @@
                                 <p>@Model.TranslatedStrings["FreeTimeContent2"]</p>
                                 <p>@Model.TranslatedStrings["FreeTimeContent3"]</p>
                                 <p>@Model.TranslatedStrings["FreeTimeContactText"]</p>
-                                <div class="white-button">
-                                    <a href="#">
-                                        @Model.TranslatedStrings["FreeTimeButton"]
-                                    </a>
+
+                                <!-- Contact Me Button -->
+                                <button class="white-button"  onclick="openEmailForm()">
+                                    @Model.TranslatedStrings["FreeTimeButton"]
+                                </button>
+
+                                <!-- Modal -->
+                                <div id="popupForm" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="closeEmailForm()">&times;</span>
+                                        <h2>Send Me Email</h2>
+                                        <form action="https://getform.io/f/broyyvka" method="POST">
+                                            <div class="form-group">
+                                                <label for="name">Name:</label>
+                                                <input type="text" id="name" name="name" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email:</label>
+                                                <input type="email" id="email" name="email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message">Message:</label>
+                                                <textarea id="message" name="message" rows="4" required></textarea>
+                                            </div>
+                                            <button type="submit" class="submit-button">Submit</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -233,39 +334,29 @@
                 <div class="section-heading">
                     <h2>@Model.TranslatedStrings["MyWorkHeading"]</h2>
                     <div class="line-dec"></div>
-                    <span>
-                        @Model.TranslatedStrings["HereAreSomeProjects"]
-                    </span>
+                    <span>@Model.TranslatedStrings["HereAreSomeProjects"]</span>
                 </div>
                 <div class="row">
                     <div class="isotope-wrapper">
                         <form class="isotope-toolbar">
                             <label>
-                                <input type="radio"
-                                       data-type="*"
-                                       checked=""
-                                       name="isotope-filter" />
+                                <input type="radio" data-type="*" checked name="isotope-filter" />
                                 <span>@Model.TranslatedStrings["All"]</span>
                             </label>
                             <label>
-                                <input type="radio"
-                                       data-type="website"
-                                       name="isotope-filter" />
+                                <input type="radio" data-type="website" name="isotope-filter" />
                                 <span>@Model.TranslatedStrings["Website"]</span>
                             </label>
                             <label>
-                                <input type="radio"
-                                       data-type="mobile app"
-                                       name="isotope-filter" />
+                                <input type="radio" data-type="mobile app" name="isotope-filter" />
                                 <span>@Model.TranslatedStrings["MobileApp"]</span>
                             </label>
                             <label>
-                                <input type="radio"
-                                       data-type="game"
-                                       name="isotope-filter" />
+                                <input type="radio" data-type="game" name="isotope-filter" />
                                 <span>@Model.TranslatedStrings["Game"]</span>
                             </label>
                         </form>
+
                         <!-- Loop through projects -->
                         <div class="isotope-box">
                             @foreach (var project in Model.Projects)
@@ -277,7 +368,29 @@
                                             <h4>@project.Title</h4>
                                         </figcaption>
                                     </figure>
-                                    <p>@project.Description</p>
+
+                                    <!-- "View Detail" Button -->
+                                    <button class="white-button" onclick="openModal(@project.Id)">
+                                        @Model.TranslatedStrings["ViewDetails"]
+                                    </button>
+
+                                    <!-- Modal (Popup) for Project Details -->
+                                    <div id="modal-@project.Id" class="modal">
+                                        <div class="modal-content">
+                                            <span class="close" onclick="closeModal(@project.Id)">&times;</span>
+                                            <h3>@project.Title</h3>
+                                            <p><strong>@project.Skills</strong></p>
+                                            <!-- Check the language from the query string -->
+                                            @if (Context.Request.Query["lang"] == "fr")
+                                            {
+                                                <p>@project.DescriptionFrench</p>
+                                            }
+                                            else
+                                            {
+                                                <p>@project.Description</p>
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             }
                         </div>
@@ -286,6 +399,7 @@
                 </div>
             </div>
         </section>
+
 
 
         <section class="section comments" data-section="section4">
@@ -370,9 +484,11 @@
                     <div class="line-dec"></div>
                 </div>
                 <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                    @foreach (var testimonial in Model.Testimonials)
+                    @if (Model.Testimonials.Any())
                     {
-                        <div style="
+                        @foreach (var testimonial in Model.Testimonials)
+                        {
+                            <div style="
                                     background: white;
                                     padding: 20px;
                                     border-radius: 12px;
@@ -381,17 +497,24 @@
                                     text-align: center;
                                     transition: transform 0.3s ease-in-out;
                                    "
-                             onmouseover="this.style.transform='scale(1.05)'"
-                             onmouseout="this.style.transform='scale(1)'">
-                            <h4 style="font-size: 18px; color: #222; font-weight: bold; margin-bottom: 8px;">
-                                @testimonial.Title
-                            </h4>
-                            <p style="font-size: 16px; color: #333; margin-bottom: 10px;">
-                                @testimonial.Message
-                            </p>
-                            <h5 style="font-size: 14px; color: #666; font-weight: bold;">
-                                - @testimonial.Name
-                            </h5>
+                                 onmouseover="this.style.transform='scale(1.05)'"
+                                 onmouseout="this.style.transform='scale(1)'">
+                                <h4 style="font-size: 18px; color: #222; font-weight: bold; margin-bottom: 8px;">
+                                    @testimonial.Title
+                                </h4>
+                                <p style="font-size: 16px; color: #333; margin-bottom: 10px;">
+                                    @testimonial.Message
+                                </p>
+                                <h5 style="font-size: 14px; color: #666; font-weight: bold;">
+                                    - @testimonial.Name
+                                </h5>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div style="width: 100%; text-align: center; font-size: 16px; color: #888; font-style: italic;">
+                            No comments yet. Please write one to share your thoughts!
                         </div>
                     }
                 </div>
@@ -509,6 +632,35 @@
         });
     </script>
 
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        function openModal(id) {
+            document.getElementById("modal-" + id).style.display = "block";
+        }
 
-</body>
+        function closeModal(id) {
+            document.getElementById("modal-" + id).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            var modals = document.querySelectorAll('.modal');
+            modals.forEach(function(modal) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function openEmailForm() {
+            document.getElementById("popupForm").style.display = "flex";
+        }
+
+        function closeEmailForm() {
+            document.getElementById("popupForm").style.display = "none";
+        }
+    </script>
+
+    </body>
 </html>

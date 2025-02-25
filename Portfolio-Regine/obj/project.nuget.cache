@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oa8pfc+GmrDLXx/kZlUbk7LVegR08Vy8S+GsvC3cWFT4JQrg2p9VLzg4f3V4ZsTujqCeHJC5hZs2rmTdceTn6A==",
+  "dgSpecHash": "0e3RktRkwTA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\LinLi\\source\\repos\\Portfolio-Regine\\Portfolio-Regine\\Portfolio-Regine.csproj",
+  "projectFilePath": "C:\\Users\\LinLi\\RiderProjects\\portfolio-regine\\Portfolio-Regine\\Portfolio-Regine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LinLi\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\LinLi\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

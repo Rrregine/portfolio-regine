@@ -54,4 +54,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\app_data\azuredb.sqlite" />
+  </ItemGroup>
+
 </Project>

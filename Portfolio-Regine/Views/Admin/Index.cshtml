@@ -67,48 +67,54 @@
         table-layout: fixed;
     }
 
-        .table th, .table td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-            word-wrap: break-word;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
+    .table th, .table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+        word-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
-        .table th {
-            background-color: #343a40;
-            color: white;
-        }
+    .table th {
+        background-color: #343a40;
+        color: white;
+    }
 
-        /* Column Width Adjustments */
-        .table td:nth-child(1), /* Title Column */
-        .table td:nth-child(2) { /* Category Column */
-            width: 15%;
-        }
+    /* Column Width Adjustments */
+    .table td:nth-child(1), /* Title Column */
+    .table td:nth-child(2) { /* Category Column */
+        width: 12%;
+    }
 
-        .table td:nth-child(3) { /* Description Column */
-            width: 40%;
-            white-space: normal;
-        }
+    .table td:nth-child(3), /* Description Column */
+    .table td:nth-child(4) { /* Description (French) Column */
+        width: 18%;
+        white-space: normal;
+    }
 
-        .table td:nth-child(4) { /* Image Column */
-            width: 15%;
-            text-align: center;
-        }
+    .table td:nth-child(5) { /* Skills Column */
+        width: 12%;
+        white-space: normal;
+    }
 
-        .table td:nth-child(5) { /* Actions Column */
-            width: 15%;
-            text-align: center;
-        }
+    .table td:nth-child(6) { /* Image Column */
+        width: 12%;
+        text-align: center;
+    }
 
-        /* Image Styling */
-        .table img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-        }
+    .table td:nth-child(7) { /* Actions Column */
+        width: 12%;
+        text-align: center;
+    }
+
+    /* Image Styling */
+    .table img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
 </style>
 
 <div class="container">
@@ -131,43 +137,49 @@
     <!-- Table to display projects -->
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Image</th> <!-- Added Image Column -->
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Description (French)</th>
+            <th>Skills</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var project in Model)
-            {
-                <tr>
-                    <td>@project.Title</td>
-                    <td>@project.Category</td>
-                    <td>@project.Description</td>
-                    <td>
-                        @if (!string.IsNullOrEmpty(project.ImagePath))
-                        {
-                            <img src="@project.ImagePath" alt="Project Image" />
-                        }
-                        else
-                        {
-                            <span>No Image</span>
-                        }
-                    </td>
-                    <td>
-                        <!-- Edit Button -->
+        @foreach (var project in Model)
+        {
+            <tr>
+                <td>@project.Title</td>
+                <td>@project.Category</td>
+                <td>@project.Description</td>
+                <td>@project.DescriptionFrench</td>
+                <td>@project.Skills</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(project.ImagePath))
+                    {
+                        <img src="@project.ImagePath" alt="Project Image" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>
+                    <div style="margin-bottom: 30px;">
                         <a href="@Url.Action("Edit", "Admin", new { id = project.Id })" class="btn btn-warning btn-sm">Edit</a>
-
-                        <!-- Delete Button (with confirmation) -->
+                    </div>
+                    <div>
                         <a href="@Url.Action("Delete", "Admin", new { id = project.Id })" class="btn btn-danger btn-sm"
                            onclick="return confirm('Are you sure you want to delete this project?');">
                             Delete
                         </a>
-                    </td>
-                </tr>
-            }
+                    </div>
+                </td>
+
+            </tr>
+        }
         </tbody>
     </table>
 </div>

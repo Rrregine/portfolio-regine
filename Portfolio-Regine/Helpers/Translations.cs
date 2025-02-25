@@ -53,7 +53,7 @@ namespace Portfolio_Regine.Helpers
             { "Skill4Title", "Communication" },
             { "Skill4Description", "Strong communication skills with experience in leadership roles, such as Product Owner in large-scale projects, ensuring smooth project execution and team coordination." },
             { "MyWorkHeading", "My Work" },
-            { "HereAreSomeProjects", "Here are some of the projects I’ve worked on, showcasing my skills in full-stack development, system design, and collaboration. Each project reflects my ability to build scalable applications, work in teams, and apply industry best practices." },
+            { "HereAreSomeProjects", "Here are some of the projects I’ve worked on, showcasing my skills in full-stack development, system design, and collaboration. Each project reflects my ability to build scalable applications, work in teams, and apply industry best practices. Check all these projects on my GitHub!" },
             { "All", "all" },
             { "Website", "website" },
             { "MobileApp", "mobile app" },
@@ -68,7 +68,8 @@ namespace Portfolio_Regine.Helpers
             { "YourMessage", "Your message" },
             { "Submit", "Submit" },
             { "TestimonialsHeading", "Testimonials" },
-                {"TestimonialSuccess", "Your testimonial has been submitted and is awaiting approval!" }
+                {"TestimonialSuccess", "Your testimonial has been submitted and is awaiting approval!" },
+                {"ViewDetails", "View Details" },
             }
         },
         {
@@ -108,7 +109,7 @@ namespace Portfolio_Regine.Helpers
             { "Skill4Title", "Communication" },
             { "Skill4Description", "Excellentes compétences en communication avec une expérience dans des rôles de leadership, comme Product Owner dans des projets à grande échelle, garantissant une exécution fluide des projets et une coordination de l'équipe." },
             { "MyWorkHeading", "Mon travail" },
-            { "HereAreSomeProjects", "Voici quelques projets sur lesquels j'ai travaillé, mettant en valeur mes compétences en développement full-stack, conception de systèmes et collaboration." },
+            { "HereAreSomeProjects", "Voici quelques projets sur lesquels j'ai travaillé, mettant en valeur mes compétences en développement full-stack, conception de systèmes et collaboration. Consultez mon profile GitHub pour voir mes projects!" },
             { "All", "tout" },
             { "Website", "site web" },
             { "MobileApp", "application mobile" },
@@ -123,7 +124,8 @@ namespace Portfolio_Regine.Helpers
             { "Title", "Titre" },
             { "YourMessage", "Votre message" },
             { "Submit", "Soumettre" },
-            { "TestimonialsHeading", "Témoignages" }
+            { "TestimonialsHeading", "Témoignages" },
+            {"ViewDetails", "En Savoir Plus" },
             }
         }
     };
