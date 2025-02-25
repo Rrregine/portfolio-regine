@@ -47,7 +47,7 @@ namespace Portfolio_Regine.Helpers
             { "Skill1Title", "Full-Stack Development" },
             { "Skill1Description", "Proficient in front-end and back-end development using technologies like Java, JavaScript, C#, React, ASP.NET MVC, and Spring Boot to build scalable and efficient applications." },
             { "Skill2Title", "System Design" },
-            { "Skill2Description", "Experienced in designing and implementing robust software architectures with microservices and strong understanding of databases like SQLite and MySQL." },
+            { "Skill2Description", "Experienced in designing and implementing robust software architectures with microservices and my strong understanding of databases like SQLite and MySQL." },
             { "Skill3Title", "Team Collaboration" },
             { "Skill3Description", "Skilled in Agile Scrum methodology, collaborating effectively with cross-functional teams using GitHub, Jira, and Figma to deliver high-quality software solutions." },
             { "Skill4Title", "Communication" },
