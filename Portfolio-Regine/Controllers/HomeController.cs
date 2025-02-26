@@ -92,6 +92,8 @@ namespace Portfolio_Regine.Controllers
             {"EmailName", Translations.Translate("EmailName") },
             {"EmailAddress", Translations.Translate("EmailAddress") },
             {"EmailMessage", Translations.Translate("EmailMessage") },
+            {"EmailSuccessMessage", Translations.Translate("EmailSuccessMessage") },
+
 
         }
             };
@@ -99,54 +101,35 @@ namespace Portfolio_Regine.Controllers
             return View(viewModel);
         }
 
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //Download CV
-        public IActionResult DownloadCV()
+        public IActionResult DownloadEnglishCV()
         {
-            // Define file paths
-            string cvFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files/CV_E.pdf");
-            string additionalFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files/CV_F.pdf");
-
-            // Prepare the file names for download
-            string zipFileName = "CVs.zip";
-
-            // Create a memory stream to hold the zip file
-            using (var memoryStream = new MemoryStream())
-            {
-                // Create a zip archive in memory
-                using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
-                {
-                    // Add the first CV file to the zip
-                    var cvFileEntry = archive.CreateEntry("CV_E.pdf");
-                    using (var entryStream = cvFileEntry.Open())
-                    using (var fileStream = new FileStream(cvFilePath, FileMode.Open, FileAccess.Read))
-                    {
-                        fileStream.CopyTo(entryStream);
-                    }
-
-                    // Add the second additional file to the zip
-                    var additionalFileEntry = archive.CreateEntry("CV_F.pdf");
-                    using (var entryStream = additionalFileEntry.Open())
-                    using (var fileStream = new FileStream(additionalFilePath, FileMode.Open, FileAccess.Read))
-                    {
-                        fileStream.CopyTo(entryStream);
-                    }
-                }
-
-                // Reset memory stream position to the beginning before returning
-                memoryStream.Position = 0;
-
-                // Return the zip file as a download
-                return File(memoryStream.ToArray(), "application/zip", zipFileName);
-            }
+            return DownloadCV("CV_E.pdf");
         }
+
+        public IActionResult DownloadFrenchCV()
+        {
+            return DownloadCV("CV_F.pdf");
+        }
+
+        private IActionResult DownloadCV(string fileName)
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/files", fileName);
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound("Requested CV file not found.");
+            }
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+            return File(fileBytes, "application/pdf", fileName);
+        }
+
 
         [HttpPost]
         public IActionResult Submit(Testimonial model)

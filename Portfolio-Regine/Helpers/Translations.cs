@@ -76,6 +76,7 @@ namespace Portfolio_Regine.Helpers
                 {"EmailName", "Your Name" },
                 {"EmailAddress", "Your Email" },
                 {"EmailMessage", "Your Message" },
+                {"EmailSuccessMessage", "Your message has been sent!"}
             }
         },
         {
@@ -138,6 +139,7 @@ namespace Portfolio_Regine.Helpers
             {"EmailName", "Votre Nom"},
             {"EmailAddress", "Votre Email"},
             {"EmailMessage", "Votre Message"},
+            {"EmailSuccessMessage", "Votre message a été envoyé!"},
             }
         }
     };

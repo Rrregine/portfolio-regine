@@ -5,6 +5,8 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Portfolio_Regine.Controllers
 @using System.Globalization
+@using Azure.Core
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 
 
 <!DOCTYPE html>
@@ -232,8 +234,14 @@
                                 <p>@Model.TranslatedStrings["SkillsContent2"]</p>
                                 <p>@Model.TranslatedStrings["SkillsContent3"]</p>
                                 <p>@Model.TranslatedStrings["SkillsCVText"]</p>
+                                @{
+                                    var lang = Context.Request.Query["lang"].FirstOrDefault() ?? "en";
+                                }
+
                                 <div class="white-button">
-                                    <a href="@Url.Action("DownloadCV", "Home")">@Model.TranslatedStrings["DownloadCV"]</a>
+                                    <a href="@Url.Action(lang == "fr" ? "DownloadFrenchCV" : "DownloadEnglishCV", "Home")">
+                                        @Model.TranslatedStrings["DownloadCV"]
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -259,7 +267,7 @@
                                     <div class="modal-content">
                                         <span class="close" onclick="closeEmailForm()">&times;</span>
                                         <h2>@Model.TranslatedStrings["SendMeEmail"]</h2>
-                                        <form action="https://getform.io/f/broyyvka" method="POST">
+                                        <form id="emailForm">
                                             <div class="form-group">
                                                 <label for="name">@Model.TranslatedStrings["EmailName"]:</label>
                                                 <input type="text" id="name" name="name" required>
@@ -274,6 +282,8 @@
                                             </div>
                                             <button type="submit" class="submit-button">@Model.TranslatedStrings["Submit"]</button>
                                         </form>
+                                        <!-- Success Message (Initially Hidden) -->
+                                        <p id="successMessage" style="display:none; color: #4CAF50;">@Model.TranslatedStrings["EmailSuccessMessage"]</p>
                                     </div>
                                 </div>
                             </div>
@@ -683,6 +693,38 @@
         function openEmailForm() {
             document.getElementById("popupForm").style.display = "flex";
         }
+
+        function closeEmailForm() {
+            document.getElementById("popupForm").style.display = "none";
+        }
+    </script>
+
+    <script>
+        document.getElementById("emailForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var formData = new FormData(this);
+
+            fetch("https://getform.io/f/broyyvka", {
+                method: "POST",
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById("emailForm").reset(); // Clear form fields
+                        document.getElementById("successMessage").style.display = "block"; // Show success message
+                        setTimeout(() => {
+                            closeEmailForm(); // Optionally close modal after success
+                        }, 3000);
+                    } else {
+                        alert("Something went wrong. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    alert("Error submitting form. Check your connection and try again.");
+                    console.error("Error:", error);
+                });
+        });
 
         function closeEmailForm() {
             document.getElementById("popupForm").style.display = "none";
