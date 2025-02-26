@@ -24,6 +24,9 @@ namespace Portfolio_Regine.Models
 
         [Required]
         public required string ImagePath { get; set; }
+        
+        [Required]
+        public required string GitHubLink { get; set; }
     }
 
 

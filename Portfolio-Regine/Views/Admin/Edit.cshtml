@@ -1,75 +1,206 @@
 ﻿@{
-    ViewBag.Title = "Admin";
+    ViewBag.Title = "Edit Project";
 }
+
+<h2 class="page-title">Edit Project</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
 
 @model Portfolio_Regine.Models.Project
 
-<h2 style="text-align:center; margin-bottom:20px;">Edit Project</h2>
-
-<div style="max-width:600px; margin:0 auto; border:1px solid #ddd; padding:20px; border-radius:5px; background-color:#f9f9f9;">
+<div class="form-container">
     <form method="post" enctype="multipart/form-data">
         <input type="hidden" asp-for="Id" />
+        <div class="form-row">
+            <div class="form-column">
+                <div class="form-group">
+                    <label for="Title">Project Title</label>
+                    <input type="text" id="Title" name="Title" asp-for="Title" required />
+                    <span asp-validation-for="Title" class="form-warning"></span>
+                </div>
 
-        <div class="form-group" style="margin-bottom:15px;">
-            <label style="font-weight:bold; display:block; margin-bottom:5px;">Title</label>
-            <input type="text" asp-for="Title" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required />
-            <span asp-validation-for="Title" class="text-danger"></span>
-        </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select asp-for="Category" required>
+                        <option value="">-- Select a category --</option>
+                        <option value="website">Website</option>
+                        <option value="mobile app">Mobile App</option>
+                        <option value="game">Game</option>
+                    </select>
+                    <span asp-validation-for="Category" class="form-warning"></span>
+                </div>
 
-        <div class="form-group" style="margin-bottom:15px;">
-            <label style="font-weight:bold; display:block; margin-bottom:5px;">Category</label>
-            <select asp-for="Category" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required>
-                <option value="">Select a category</option>
-                <option value="website">Website</option>
-                <option value="mobile app">Mobile App</option>
-                <option value="game">Game</option>
-            </select>
-            <span asp-validation-for="Category" class="text-danger"></span>
-        </div>
+                <div class="form-group">
+                    <label for="Skills">Skills (comma-separated)</label>
+                    <input type="text" id="Skills" name="Skills" asp-for="Skills" required />
+                    <span asp-validation-for="Skills" class="form-warning"></span>
+                </div>
 
-        <div class="form-group" style="margin-bottom:15px;">
-            <label style="font-weight:bold; display:block; margin-bottom:5px;">Description</label>
-            <textarea asp-for="Description" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
+                <div class="form-group">
+                    <label for="GitHubLink">Access Link / GitHub Link</label>
+                    <input type="text" id="GitHubLink" name="GitHubLink" asp-for="GitHubLink" required />
+                    <span asp-validation-for="GitHubLink" class="form-warning"></span>
+                </div>
 
-        <div class="form-group" style="margin-bottom:15px;">
-            <label style="font-weight:bold; display:block; margin-bottom:5px;">Description (French)</label>
-            <textarea asp-for="DescriptionFrench" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required></textarea>
-            <span asp-validation-for="DescriptionFrench" class="text-danger"></span>
-        </div>
+                <div class="form-group">
+                    <label>Current Image</label>
+                    <div>
+                        @if (!string.IsNullOrEmpty(Model.ImagePath))
+                        {
+                            <img src="@Model.ImagePath" alt="Project Image" class="current-image" />
+                        }
+                        else
+                        {
+                            <p class="file-hint">No image available</p>
+                        }
+                    </div>
+                </div>
 
-        <div class="form-group" style="margin-bottom:15px;">
-            <label style="font-weight:bold; display:block; margin-bottom:5px;">Skills (comma-separated)</label>
-            <input type="text" asp-for="Skills" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" required />
-            <span asp-validation-for="Skills" class="text-danger"></span>
-        </div>
+                <div class="form-group">
+                    <label for="Image">New Image</label>
+                    <input type="file" id="Image" name="Image" />
+                    <span class="file-hint">* Upload a new file to replace the existing image.</span>
+                </div>
+            </div>
 
-        <div class="form-group" style="margin-bottom:15px;">
-            <label style="font-weight:bold; display:block; margin-bottom:5px;">Current Image</label>
-            <div style="margin-top:5px;">
-                @if (!string.IsNullOrEmpty(Model.ImagePath))
-                {
-                    <img src="@Model.ImagePath" alt="Project Image" style="width: 150px; height: auto; border-radius:4px; display:block; margin-bottom:10px;" />
-                }
-                else
-                {
-                    <p style="color:#888;">No image available</p>
-                }
+            <div class="form-column">
+                <div class="form-group">
+                    <label for="Description">Description</label>
+                    <textarea id="Description" name="Description" asp-for="Description" rows="6" required></textarea>
+                    <span asp-validation-for="Description" class="form-warning"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="DescriptionFrench">Description (French)</label>
+                    <textarea id="DescriptionFrench" name="DescriptionFrench" asp-for="DescriptionFrench" rows="6" required></textarea>
+                    <span asp-validation-for="DescriptionFrench" class="form-warning"></span>
+                </div>
             </div>
         </div>
 
-        <div class="form-group" style="margin-bottom:15px;">
-            <label style="font-weight:bold; display:block; margin-bottom:5px;">New Image</label>
-            <input type="file" name="image" class="form-control" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;" />
-        </div>
-
-        <div class="form-group" style="margin-top:20px; text-align:right;">
-            <button type="submit" class="btn btn-success" style="background-color:#28a745; color:#fff; border:none; padding:10px 20px; border-radius:4px; cursor:pointer;">Save</button>
-            <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary" style="background-color:#6c757d; color:#fff; border:none; padding:10px 20px; border-radius:4px; text-decoration:none; margin-left:10px;">Cancel</a>
+        <div class="form-buttons">
+            <button type="submit" class="btn-save">Save Changes</button>
+            <a href="@Url.Action("Index", "Admin")" class="btn-cancel">Cancel</a>
         </div>
     </form>
 </div>
 
-@await Html.PartialAsync("_ValidationScriptsPartial")
+<style>
+    body {
+        background-color: #000;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
 
+    .page-title {
+        text-align: center;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .form-warning {
+        text-align: center;
+        color: #ff4d4d;
+    }
+
+    .validation-summary {
+        max-width: 600px;
+        margin: 0 auto 20px;
+        color: #ff4d4d;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        border: 1px solid #555;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #333;
+    }
+
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .form-column {
+        width: 48%;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: white;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #777;
+        border-radius: 4px;
+        background-color: #555;
+        color: white;
+        box-sizing: border-box;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 250px;
+    }
+
+    .form-group input[type="file"] {
+        background-color: #444;
+        border: none;
+    }
+
+    .file-hint {
+        display: block;
+        margin-top: 5px;
+        color: #aaa;
+    }
+
+    .form-buttons {
+        margin-top: 20px;
+        text-align: right;
+    }
+
+    .btn-save, .btn-cancel {
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        border: none;
+    }
+
+    .btn-save {
+        background-color: #a43a49;
+        color: white;
+    }
+
+    .btn-cancel {
+        background-color: #777;
+        color: white;
+        margin-left: 10px;
+    }
+
+    .current-image {
+        max-width: 100%; /* Ensures image does not exceed container width */
+        max-height: 200px; /* Limits the height to keep things balanced */
+        display: block;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #777;
+    }
+
+</style>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

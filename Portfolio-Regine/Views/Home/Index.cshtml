@@ -79,7 +79,7 @@
             padding: 20px;
             border-radius: 8px;
             width: 450px;
-            text-align: center;
+            text-align: left;
             position: relative;
             transform: translateY(-10%);
             overflow-y: auto;  /* Enable vertical scrolling if content overflows */
@@ -108,6 +108,7 @@
             right: 15px;
             font-size: 24px;
             cursor: pointer;
+            color: white;
         }
 
         /*EmailForm*/
@@ -187,15 +188,15 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Logout", "Account")">Logout</a>
+                                <a class="nav-link" href="@Url.Action("Logout", "Account")"><u>Logout</u></a>
                             </li>
 
-                            <a class="nav-link" href="@Url.Action("Index", "Admin")">Manage Page</a>
+                            <a class="nav-link" href="@Url.Action("Index", "Admin")"><u>Manage Page</u></a>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Login", "Account")">Login</a>
+                                <a class="nav-link" href="@Url.Action("Login", "Account")"><u>Login</u></a>
                             </li>
                         }
                     </ul>
@@ -257,21 +258,21 @@
                                 <div id="popupForm" class="modal">
                                     <div class="modal-content">
                                         <span class="close" onclick="closeEmailForm()">&times;</span>
-                                        <h2>Send Me Email</h2>
+                                        <h2>@Model.TranslatedStrings["SendMeEmail"]</h2>
                                         <form action="https://getform.io/f/broyyvka" method="POST">
                                             <div class="form-group">
-                                                <label for="name">Name:</label>
+                                                <label for="name">@Model.TranslatedStrings["EmailName"]:</label>
                                                 <input type="text" id="name" name="name" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="email">Email:</label>
+                                                <label for="email">@Model.TranslatedStrings["EmailAddress"]:</label>
                                                 <input type="email" id="email" name="email" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="message">Message:</label>
+                                                <label for="message">@Model.TranslatedStrings["EmailMessage"]:</label>
                                                 <textarea id="message" name="message" rows="4" required></textarea>
                                             </div>
-                                            <button type="submit" class="submit-button">Submit</button>
+                                            <button type="submit" class="submit-button">@Model.TranslatedStrings["Submit"]</button>
                                         </form>
                                     </div>
                                 </div>
@@ -325,7 +326,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
 
         <section class="section my-work" data-section="section3">
@@ -379,6 +379,38 @@
                                             <span class="close" onclick="closeModal(@project.Id)">&times;</span>
                                             <h3>@project.Title</h3>
                                             <p><strong>@project.Skills</strong></p>
+
+                                            <!-- Access Link / GitHub Link -->
+                                            @{
+                                                var links = project.GitHubLink?.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries) ?? new string[0];
+                                            }
+                                            <p><strong>Access Link / GitHub Link:</strong>
+                                                @if (links.Length > 0)
+                                                {
+                                                    @foreach (var link in links)
+                                                    {
+                                                        bool isValidUrl = Uri.IsWellFormedUriString(link, UriKind.Absolute);
+                                                        if (isValidUrl)
+                                                        {
+                                                            <a href="@link" target="_blank">@link</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            @link
+                                                        }
+
+                                                        if (link != links.Last()) // Add comma and space between links
+                                                        {
+                                                            <text>, </text>
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <text>No links available</text>
+                                                }
+                                            </p>
+
                                             <!-- Check the language from the query string -->
                                             @if (Context.Request.Query["lang"] == "fr")
                                             {
@@ -390,6 +422,7 @@
                                             }
                                         </div>
                                     </div>
+
                                 </div>
                             }
                         </div>

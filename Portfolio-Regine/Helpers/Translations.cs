@@ -70,6 +70,12 @@ namespace Portfolio_Regine.Helpers
             { "TestimonialsHeading", "Testimonials" },
                 {"TestimonialSuccess", "Your testimonial has been submitted and is awaiting approval!" },
                 {"ViewDetails", "View Details" },
+                
+                //Email model
+                {"SendMeEmail", "Send Me Email" },
+                {"EmailName", "Your Name" },
+                {"EmailAddress", "Your Email" },
+                {"EmailMessage", "Your Message" },
             }
         },
         {
@@ -126,6 +132,12 @@ namespace Portfolio_Regine.Helpers
             { "Submit", "Soumettre" },
             { "TestimonialsHeading", "Témoignages" },
             {"ViewDetails", "En Savoir Plus" },
+            
+            //Email model
+            {"SendMeEmail", "Envoyez-moi des Messages" },
+            {"EmailName", "Votre Nom"},
+            {"EmailAddress", "Votre Email"},
+            {"EmailMessage", "Votre Message"},
             }
         }
     };

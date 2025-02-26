@@ -86,6 +86,13 @@ namespace Portfolio_Regine.Controllers
             { "Submit", Translations.Translate("Submit") },
             { "TestimonialsHeading", Translations.Translate("TestimonialsHeading") },
             { "ViewDetails", Translations.Translate("ViewDetails") },
+            
+            //email model
+            {"SendMeEmail", Translations.Translate("SendMeEmail") },
+            {"EmailName", Translations.Translate("EmailName") },
+            {"EmailAddress", Translations.Translate("EmailAddress") },
+            {"EmailMessage", Translations.Translate("EmailMessage") },
+
         }
             };
 
