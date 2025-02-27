@@ -731,5 +731,28 @@
         }
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var $grid = $(".isotope-box").isotope({
+                itemSelector: ".isotope-item",
+                layoutMode: "fitRows"
+            });
+
+            $grid.imagesLoaded().progress(function () {
+                $grid.isotope("layout");
+            });
+
+            setTimeout(function () {
+                $grid.isotope("layout");
+            }, 500);
+
+            $(".isotope-toolbar input").on("change", function () {
+                var filterValue = $(this).attr("data-type");
+                filterValue = filterValue === "*" ? "*" : '[data-type="' + filterValue + '"]';
+                $grid.isotope({ filter: filterValue });
+            });
+        });
+    </script>
+
     </body>
 </html>
